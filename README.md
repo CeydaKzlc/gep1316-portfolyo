@@ -8,4 +8,4 @@ Kodlama ve YZ'nin mesleğimdeki yeri; Çizgi Film ve Animasyon bölümünde gör
 * Oyun tasarımı ve interaktif medya
 
 ## Bağlantılar
-* Üniversitemizin web sitesini ziyaret etmek için [buraya tıklayabilirsiniz](https://www.bau.edu.tr)[cite: 1].
+* Üniversitemizin web sitesini ziyaret etmek için [buraya tıklayabilirsiniz](https://www.bau.edu.tr)
