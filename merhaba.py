@@ -1,26 +1,46 @@
-# Yaş Hesaplayıcı ve Kişisel Karşılama Programı
+from datetime import datetime
 
-Kullanıcıdan adını ve doğum yılını alarak güncel yaşını hesaplayan, hatalı veri girişlerine karşı doğrulama (validation) mekanizmasına sahip konsol tabanlı bir Python uygulamasıdır.
 
-## Özellikler
+def main():
+    guncel_yil = datetime.now().year
 
-- **Dinamik Yıl Hesaplama:** Python `datetime` modülü sayesinde güncel yılı otomatik olarak algılar.
-- **Giriş Doğrulama (Hata Yönetimi):**
-  - Sayısal olmayan karakter girişlerini (`abc`, boşluk vb.) yakalar ve uyarır.
-  - Gelecek yılların girilmesini engeller.
-  - 1900 yılından önceki gerçekçi olmayan tarihleri reddeder.
-  - İsim alanının boş bırakılmasını önler.
-- **Kişiselleştirilmiş Çıktı:** Kullanıcının adını baş harfi büyük olacak şekilde düzenleyerek özel bir karşılama mesajı sunar.
+    # İsim alma ve boş bırakılmasını önleme
+    while True:
+        ad = input("Lütfen adınızı girin: ").strip()
+        if ad:
+            break
+        print("Uyarı: İsim alanı boş bırakılamaz. Lütfen tekrar deneyin.\n")
 
-## Gereksinimler
+    # Doğum yılı alma ve doğrulama
+    while True:
+        giris = input("Lütfen doğum yılınızı girin (Örn: 2006): ").strip()
 
-- Python 3.6 veya üzeri (Harici bir kütüphane kurulumu gerektirmez).
+        try:
+            dogum_yili = int(giris)
 
-## Kurulum ve Çalıştırma
+            if dogum_yili > guncel_yil:
+                print(
+                    f"Uyarı: Gelecek bir yıl ({dogum_yili}) giremezsiniz. Lütfen geçerli bir yıl girin.\n"
+                )
+            elif dogum_yili < 1900:
+                print(
+                    "Uyarı: 1900 yılından küçük bir tarih girdiniz. Lütfen geçerli bir doğum yılı girin.\n"
+                )
+            else:
+                yas = guncel_yil - dogum_yili
+                break
 
-1. Proje dosyalarını bilgisayarınıza indirin veya `yas_hesaplayici.py` dosyasını oluşturun.
-2. Terminali (veya komut istemcisini) açarak dosyanın bulunduğu klasöre gidin.
-3. Aşağıdaki komutu çalıştırın:
+        except ValueError:
+            print(
+                "Uyarı: Hatalı giriş! Lütfen doğum yılınızı yalnızca rakamlarla yazın.\n"
+            )
 
-```bash
-python3 yas_hesaplayici.py
+    # Kişiye özel karşılama mesajı
+    print("-" * 45)
+    print(f"Hoş geldin, {ad.capitalize()}!")
+    print(f"{guncel_yil} yılı itibarıyla {yas} yaşındasın. Harika bir gün dilerim!")
+    print("-" * 45)
+
+
+if __name__ == "__main__":
+    main()
